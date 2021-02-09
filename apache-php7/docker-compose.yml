@@ -1,0 +1,10 @@
+version: "3"
+services:
+  php7:
+    build: ./
+    container_name: php7-container
+    volumes:
+      - ./www:/var/www/html/public
+    ports:
+      - "80:80"
+
