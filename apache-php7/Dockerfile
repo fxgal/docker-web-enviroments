@@ -1,3 +1,4 @@
+
 # Base image
 FROM php:7.4-apache
 
@@ -5,11 +6,13 @@ FROM php:7.4-apache
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Run apt update and install some dependancies needed for docker-php-ext
-RUN apt update && apt install -y apt-utils sendmail mariadb-client pngquant unzip zip libpng-dev libmcrypt-dev git \
-  curl libicu-dev libxml2-dev libssl-dev
+RUN apt update && apt install -y apt-utils sendmail mariadb-client \
+  pngquant unzip zip libpng-dev libmcrypt-dev git curl libicu-dev \
+  libxml2-dev libssl-dev sqlite libpq-dev
 
 # Install PHP extensions
 # RUN docker-php-ext-install mysqli bcmath gd intl xml curl pdo_mysql pdo_sqlite hash zip dom session opcache
+RUN docker-php-ext-install gd intl pdo pdo_mysql pdo_pgsql pgsql
 
 # Update web root to public
 # See: https://hub.docker.com/_/php#changing-documentroot-or-other-apache-configuration
@@ -19,4 +22,3 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 # Enable mod_rewrite
 RUN a2enmod rewrite
-
