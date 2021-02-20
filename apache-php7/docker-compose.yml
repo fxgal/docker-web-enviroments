@@ -2,9 +2,19 @@ version: "3"
 services:
   php7:
     build: ./
-    container_name: php7-container
+    container_name: php7.docker
+    restart: always
     volumes:
-      #- ./www:/var/www/html/public
+      #- ./www:/var/www/html
       - /srv/http:/var/www/html/public
+      - ~/.ssh:/root/.ssh
     ports:
       - "80:80"
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/html/public
+    networks:
+      my_network:
+        ipv4_address: 172.100.0.115
+networks:
+  my_network:
+    external: true

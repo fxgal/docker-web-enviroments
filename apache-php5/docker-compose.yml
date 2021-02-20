@@ -1,10 +1,19 @@
-version: "3.1"
+version: "3"
 services:
   php5:
     build: ./
-    container_name: php5-container
+    container_name: php5.docker
     volumes:
-      - ../apache-php7/www:/var/www/html/public
+      #- ./www:/var/www/html
+      - /srv/http:/var/www/html/public
+      - ~/.ssh:/root/.ssh
     ports:
-      - "8081:80"
-
+      - "81:80"
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/html/public
+    networks:
+      my_network:
+        ipv4_address: 172.100.0.116
+networks:
+  my_network:
+    external: true

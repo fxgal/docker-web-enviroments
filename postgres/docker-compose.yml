@@ -1,11 +1,18 @@
-version: '3'
+version: "3"
 services:
   postgres:
-    image: 'postgres:latest'
+    container_name: postgres.docker
+    image: "postgres:latest"
     restart: always
     volumes:
-      - './postgres_data:/var/lib/postgresql/data'
+      - "./postgres_data:/var/lib/postgresql/data"
     environment:
       - POSTGRES_PASSWORD=1234
     ports:
-      - '5432:5432'
+      - "5432:5432"
+    networks:
+      my_network:
+        ipv4_address: 172.100.0.101
+networks:
+  my_network:
+    external: true
