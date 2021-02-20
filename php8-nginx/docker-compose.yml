@@ -1,0 +1,20 @@
+version: "3"
+services:
+  php8:
+    image: webdevops/php-nginx:8.0-alpine
+    container_name: php8.docker
+    #restart: always
+    volumes:
+      #- ./www:/var/www/html
+      - /srv/http:/var/www/html/public
+      - ~/.ssh:/root/.ssh
+    ports:
+      - "84:80"
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/html/public
+    networks:
+      my_network:
+        ipv4_address: 172.100.0.117
+networks:
+  my_network:
+    external: true

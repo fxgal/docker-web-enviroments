@@ -1,5 +1,6 @@
 postgres/postgres_data
 mysql/mysql_data
 mariadb/mysql_data
-apache-php7/www
-apache-php5/www
+php8-nginx/www
+php7-apache/www
+php5-apache/www
