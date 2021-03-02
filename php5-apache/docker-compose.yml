@@ -4,7 +4,6 @@ services:
     build: ./
     container_name: php5.docker
     volumes:
-      #- ./www:/var/www/html
       - /srv/http:/var/www/html/public
       - ~/.ssh:/root/.ssh
     ports:

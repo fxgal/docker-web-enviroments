@@ -3,7 +3,6 @@ services:
   php8:
     image: webdevops/php-nginx:8.0-alpine
     container_name: php8.docker
-    #restart: always
     volumes:
       #- ./www:/var/www/html
       - /srv/http:/var/www/html/public

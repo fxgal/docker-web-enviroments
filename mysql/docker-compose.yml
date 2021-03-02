@@ -1,14 +1,10 @@
-version: '3'
+version: "3"
 services:
   mysql:
-    image: 'mysql:latest'
-    restart: always
+    image: "mysql:latest"
     volumes:
-      - './mysql_data:/var/lib/mysql'
+      - "./mysql_data:/var/lib/mysql"
     environment:
-      - MYSQL_ROOT_PASSWORD=1234
-      #- MYSQL_DATABASE: 'my_db'
-      #- MYSQL_USER: 'user'
-      #- MYSQL_PASSWORD: '1234'
+      - MYSQL_ROOT_PASSWORD=mysqladmin
     ports:
-      - '3306:3306'
+      - "3306:3306"

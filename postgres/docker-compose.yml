@@ -3,11 +3,10 @@ services:
   postgres:
     container_name: postgres.docker
     image: "postgres:latest"
-    restart: always
     volumes:
       - "./postgres_data:/var/lib/postgresql/data"
     environment:
-      - POSTGRES_PASSWORD=1234
+      - POSTGRES_PASSWORD=pgadmin
     ports:
       - "5432:5432"
     networks:

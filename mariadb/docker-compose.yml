@@ -3,14 +3,10 @@ services:
   mysql:
     container_name: mariadb.docker
     image: "mariadb:latest"
-    restart: always
     volumes:
       - "./mysql_data:/var/lib/mysql"
     environment:
-      - MYSQL_ROOT_PASSWORD=1234
-      #- MYSQL_DATABASE: 'my_db'
-      #- MYSQL_USER: 'user'
-      #- MYSQL_PASSWORD: '1234'
+      - MYSQL_ROOT_PASSWORD=mysqladmin
     ports:
       - "3306:3306"
     networks:
